@@ -83,7 +83,7 @@ function RegistrationForm(){
                 eventId:'66b7944447758b3eefbfa3f3'
             }
 
-            fetch('http://localhost:3000/userDetails', {
+            fetch('http://13.233.157.167:3002/userDetails', {
                 method:'POST',
                 headers: {
                     'Accept': 'application/json',
