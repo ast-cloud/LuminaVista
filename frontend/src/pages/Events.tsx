@@ -31,9 +31,9 @@ function EventsSection(){
 
 function UpcomingEvents(){
 
-    const fetchAllEvents = ()=>{
+    // const fetchAllEvents = ()=>{
 
-    }
+    // }
 
     return (
         <Card sx={{width:'90vw', display:'flex', flexDirection:'column', alignSelf:'center', py:5}}>

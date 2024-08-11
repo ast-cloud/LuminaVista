@@ -1,16 +1,16 @@
 import { Box, Button, Card, Divider, Snackbar, Typography } from "@mui/material";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 
 export default function Event(){
 
-    const {id} = useParams();
+    // const {id} = useParams();
 
     const [urlCopiedSnackbarOpen, setUrlCopiedSnackbarOpen] = useState(false);
 
-    const fetchEventDetails = ()=>{
+    // const fetchEventDetails = ()=>{
         
-    }
+    // }
 
     const handleShare = ()=>{
         navigator.clipboard.writeText(location.href);
