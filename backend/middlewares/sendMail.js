@@ -89,7 +89,7 @@ const sendMail = async(email, eventId, registrationDate, firstName) => {
             return
         }
         const mailOptions = {
-            from: 'gangradevidushi7@gmail.com', // Your sender email
+            from: 'aastikyadav1997.ay@gmail.com', // Your sender email
             to: email,
             subject: `Welcome Lumina Vista's "${eventName}" event.`,
             html: `
