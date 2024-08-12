@@ -2,7 +2,7 @@ import { Add } from "@mui/icons-material";
 import { Box, Button, Checkbox, FormControlLabel, MenuItem, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
-export default function ContactUsSection(){
+export default function ContactUsSection(props:any){
 
     const [formData, setFormData] = useState({
         name:'',
@@ -54,7 +54,7 @@ export default function ContactUsSection(){
     }
 
     return (
-        <Box sx={{display:'flex', flexDirection:'column', mx:'4vw', mb:5, border:'0px solid red'}}>
+        <Box ref={props.reference} sx={{display:'flex', flexDirection:'column', mx:'4vw', mb:5, border:'0px solid red'}}>
             <Typography fontSize={'50px'} color={'#265D6B'} mb={'4vw'} lineHeight={1} sx={{fontWeight:2}}>Contact Us</Typography>
             
             <Box sx={{display:'flex', flexDirection:'row', height:'82vh', width:'100%', gap:2, border:'0px solid red'}}>

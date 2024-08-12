@@ -3,6 +3,7 @@ import { Box, Button, Card, CardContent, CardMedia, Divider, Grid, Typography } 
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ContactUsSection from "../components/ContactUsSection";
 
 const monthNames = [
     "January", "February", "March", "April", "May", "June",
@@ -16,7 +17,7 @@ export default function Events(){
             <Divider sx={{mt:8, mb:5, width:'90vw', alignSelf:'center'}}/>
             <UpcomingEvents/>
             <Divider sx={{mt:8, mb:5, width:'90vw', alignSelf:'center'}}/>
-
+            <ContactUsSection/>
         </Box>
     );
 }

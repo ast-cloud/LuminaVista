@@ -1,29 +1,35 @@
 import { ExpandMoreOutlined } from "@mui/icons-material";
 import { Box, Button, Card, CardContent, CardMedia, Divider, Grid, Typography } from "@mui/material";
 import ContactUsSection from "../components/ContactUsSection";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 export default function Services(){
+    const contactSectionRef = useRef<HTMLDivElement>(null);
+    const scrollToContactSection = () => {
+        contactSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      };
     return (
         <Box sx={{display:'flex', flexDirection:'column'}}>
-            <OurServices/>
+            <OurServices scrollToContactSection={scrollToContactSection}/>
             <Divider sx={{mt:8, mb:2, width:'90vw', alignSelf:'center'}}/>
             <MiddleSection/>
             <Divider sx={{mt:8, mb:5, width:'90vw', alignSelf:'center'}}/>
             <SeamlessClientExperience/>
             <Divider sx={{mt:8, mb:5, width:'90vw', alignSelf:'center'}}/>
-            <ContactUsSection/>
+            <ContactUsSection reference={contactSectionRef}/>
         </Box>
     );
 }
 
-function OurServices(){
+function OurServices({scrollToContactSection}:any){
     return (
         <Box sx={{display:'flex', flexDirection:'column', px:4, pt:4}}>
             <Box sx={{display:'flex', flexDirection:'row', gap:2}}>
                 <Card sx={{display:'flex', flexDirection:'column', width:'50%', borderRadius:'16px', pt:4, px:4}}>
                     <Typography variant="h2" color={'#265D6B'} pb={4}>Our Services</Typography>
                     <Typography pb={4}>At Lumina Vista, we provide comprehensive support for students and graduates in pursuing their career dreams. Our services include Study in Australia, Migrate to Australia, Job-Ready Programs, Career Counselling, Mentorship Programs, and Internship. We are dedicated to helping you achieve academic success and professional growth through tailored guidance and practical insights.</Typography>
-                    <Button variant="outlined" size="large" sx={{color:'black', borderColor:'black', borderRadius:'12px', textTransform:'none', width:'40%', px:2, ":hover":{color:'white', backgroundColor:'black'}}}>Book a free session now</Button>
+                    <Button variant="outlined" size="large" sx={{color:'black', borderColor:'black', borderRadius:'12px', textTransform:'none', width:'40%', px:2, ":hover":{color:'white', backgroundColor:'black'}}} onClick={scrollToContactSection}>Book a free session now</Button>
                     <ExpandMoreOutlined sx={{fontSize:'90px', m:0, p:0, textShadow:5}}/>
                 </Card>
                 <Box component={'img'} src="/Business_representative.webp" sx={{width:'50%', borderRadius:'16px'}}/>
@@ -33,6 +39,9 @@ function OurServices(){
 }
 
 function MiddleSection(){
+
+    const navigate = useNavigate();
+
     return (
         <Grid container sx={{width:'100%', px:4}}>
             <Grid item sm={6} sx={{px:2, mt:4}}>
@@ -42,7 +51,7 @@ function MiddleSection(){
                                 <Typography fontSize={25}>Study in Australia</Typography>
                                 <Divider/>
                                 <Typography>Australia offers top-tier education and cultural diversity. Lumina Vista supports you with personalized counselling, application help, visa assistance, pre-departure tips, and ongoing support, including housing and job assistance.</Typography>
-                                <Typography sx={{textDecoration:'underline'}}>Learn more</Typography>
+                                <Typography component={'a'} sx={{textDecoration:'underline', cursor:'pointer'}} onClick={()=>{navigate('/services/study-in-australia')}}>Learn more</Typography>
                         </Box>
                     </CardContent>
                     <CardMedia image="/Australian_Flag.webp" sx={{height:'60%'}}/>
@@ -55,7 +64,7 @@ function MiddleSection(){
                                 <Typography fontSize={25}>Migrate to Australia</Typography>
                                 <Divider/>
                                 <Typography>Australia offers a high quality of life, a vibrant multicultural society, and a strong economy. Lumina Vista provides comprehensive support for visas, job searches, workplace culture, and relocation to ensure your successful integration into Australian life.</Typography>
-                                <Typography sx={{textDecoration:'underline'}}>Learn more</Typography>
+                                <Typography component={'a'} sx={{textDecoration:'underline', cursor:'pointer'}} onClick={()=>{navigate('/services/migrate-to-australia')}}>Learn more</Typography>
                         </Box>
                     </CardContent>
                     <CardMedia image="/Perth.webp" sx={{height:'60%'}}/>
@@ -68,7 +77,7 @@ function MiddleSection(){
                                 <Typography fontSize={25}>Career Counselling Services</Typography>
                                 <Divider/>
                                 <Typography>We offer personalized career guidance and strategic planning for individuals at all career stages. Our expert counsellors provide the tools and insights needed to succeed in the competitive job market. Book your session now to get personalized guidance.</Typography>
-                                <Typography sx={{textDecoration:'underline'}}>Learn more</Typography>
+                                <Typography component={'a'} sx={{textDecoration:'underline', cursor:'pointer'}} onClick={()=>{navigate('/services/career-counselling-services')}}>Learn more</Typography>
                         </Box>
                     </CardContent>
                     <CardMedia image="/Key_Speaker.webp" sx={{height:'60%'}}/>
@@ -81,7 +90,7 @@ function MiddleSection(){
                                 <Typography fontSize={25}>Job ready programs</Typography>
                                 <Divider/>
                                 <Typography>Our Job Ready Programs equip graduates & professionals with the practical skills & career coaching needed to secure jobs & advance their careers. We offer technical training, internships, & personalized support to ensure your success in the job market.</Typography>
-                                <Typography sx={{textDecoration:'underline'}}>Learn more</Typography>
+                                <Typography component={'a'} sx={{textDecoration:'underline', cursor:'pointer'}} onClick={()=>{navigate('/services/job-ready-programs')}}>Learn more</Typography>
                         </Box>
                     </CardContent>
                     <CardMedia image="/Job_Interview.webp" sx={{height:'60%'}}/>
@@ -94,7 +103,7 @@ function MiddleSection(){
                                 <Typography fontSize={25}>Mentorship Programs</Typography>
                                 <Divider/>
                                 <Typography>Our mentorship programs offer tailored guidance & practical insights to support your personal & professional growth. Whether you're a student, recent graduate, or seasoned professional, our mentors provide invaluable support to help you navigate career challenges & achieve your goals effectively.</Typography>
-                                <Typography sx={{textDecoration:'underline'}}>Learn more</Typography>
+                                <Typography component={'a'} sx={{textDecoration:'underline', cursor:'pointer'}} onClick={()=>{navigate('/services/mentorship-programs')}}>Learn more</Typography>
                         </Box>
                     </CardContent>
                     <CardMedia image="/Coworking_Space.webp" sx={{height:'60%'}}/>
@@ -107,7 +116,7 @@ function MiddleSection(){
                                 <Typography fontSize={25}>Internship</Typography>
                                 <Divider/>
                                 <Typography>Ready to kickstart your career with hands-on experience? Explore our exciting internship opportunities designed to help you gain practical skills, build your network, and set the foundation for a successful career. Dive in and discover how you can make the most of your internship journey with us!</Typography>
-                                <Typography sx={{textDecoration:'underline'}}>Learn more</Typography>
+                                <Typography component={'a'} sx={{textDecoration:'underline', cursor:'pointer'}} onClick={()=>{navigate('/services/internship')}}>Learn more</Typography>
                         </Box>
                     </CardContent>
                     <CardMedia image="/In_a_Meeting.webp" sx={{height:'60%'}}/>

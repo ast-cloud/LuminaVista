@@ -9,6 +9,12 @@ import ContactUs from './pages/Contactus';
 import Events from './pages/Events';
 import Event from './pages/Event';
 import EventRegistration from './pages/EventRegistration';
+import StudyInAustralia from './pages/services/StudyInAustralia';
+import MigrateToAustralia from './pages/services/MigrateToAustralia';
+import CareerCounsellingServices from './pages/services/CareerCounsellingServices';
+import JobReadyPrograms from './pages/services/JobReadyPrograms';
+import MentorshipPrograms from './pages/services/MentorshipPrograms';
+import Internship from './pages/services/Internship';
 
 function App() {
 
@@ -19,6 +25,12 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/services' element={<Services/>}/>
+          <Route path='/services/study-in-australia' element={<StudyInAustralia/>}/>
+          <Route path='/services/migrate-to-australia' element={<MigrateToAustralia/>}/>
+          <Route path='/services/career-counselling-services' element={<CareerCounsellingServices/>}/>
+          <Route path='/services/job-ready-programs' element={<JobReadyPrograms/>}/>
+          <Route path='/services/mentorship-programs' element={<MentorshipPrograms/>}/>
+          <Route path='/services/internship' element={<Internship/>}/>
           <Route path='/faqs' element={<FAQs/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/contactus' element={<ContactUs/>}/>
