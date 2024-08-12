@@ -1,5 +1,6 @@
 import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function EventRegistration(){
     return (
@@ -19,6 +20,8 @@ export default function EventRegistration(){
 function RegistrationForm(){
 
     const [agreeToWebinarPolicy, setAgreeToWebinarPolicy] = useState(false);
+
+    const {id, datetime} = useParams();
 
     const [formData, setFormData] = useState({
         firstName:'',
@@ -79,8 +82,8 @@ function RegistrationForm(){
                 phoneNumber:formData.phone,
                 areaOfInterest:[formData.areaOfInterest],
                 comments:formData.comment,
-                registrationDate:'12082024150016000000',
-                eventId:'66b7944447758b3eefbfa3f3'
+                registrationDate:datetime,
+                eventId: id
             }
 
             fetch('http://13.233.157.167:3002/userDetails', {
@@ -95,7 +98,7 @@ function RegistrationForm(){
             })
         }
     }
-
+    
     return (
         <Box sx={{display:'flex', flexDirection:'column', width:'35vw', alignItems:'flex-start', gap:4, border:'0px solid red'}}>
             <Typography variant="h4">1. Add your details</Typography>

@@ -24,7 +24,7 @@ function App() {
           <Route path='/contactus' element={<ContactUs/>}/>
           <Route path='/events' element={<Events/>}/>
           <Route path='/event/:id' element={<Event/>}/>
-          <Route path='/event/:id/register' element={<EventRegistration/>}/>
+          <Route path='/event/:id/register/:datetime' element={<EventRegistration/>}/>
         </Routes>
         <Footer/>
       </Router>
