@@ -1,5 +1,13 @@
 import { ExpandMoreOutlined } from "@mui/icons-material";
 import { Box, Button, Card, CardContent, CardMedia, Divider, Grid, Typography } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
 
 export default function Events(){
     return (
@@ -31,38 +39,48 @@ function EventsSection(){
 
 function UpcomingEvents(){
 
-    // const fetchAllEvents = ()=>{
+    const [allEvents, setAllEvents] = useState<any>(undefined);
+    const navigate = useNavigate();
+    useEffect(()=>{
 
-    // }
+        const fetchAllEvents = async ()=>{
+            let allEventsData = await axios.get('http://13.233.157.167:3002/event');
+            if(allEventsData.status==200){
+                setAllEvents(allEventsData.data);
+                console.log('All events - ', allEventsData.data);
+            }
+            else{
+                setAllEvents(null);
+            }
+        }
+        fetchAllEvents();
+    },[]);
 
-    return (
-        <Card sx={{width:'90vw', display:'flex', flexDirection:'column', alignSelf:'center', py:5}}>
-            <Typography variant="h6" sx={{alignSelf:'center'}}>Upcoming Events</Typography>
-            <Grid container px={4} mt={5} gap={2}>
-                <Grid item sx={{width:'35%'}}>
-                    <Card sx={{borderRadius:'16px'}}>
-                        <CardMedia image="/Australian_University.webp" sx={{height:'40vh', objectFit:'fill'}}/>
-                        <CardContent>
-                            <Typography>Event name</Typography>
-                            <Typography>Upcoming date of the event</Typography>
-                            <Typography>Webinar</Typography>
-                            <Button variant="outlined" size="small" sx={{mt:2, borderRadius:'14px', textTransform:'none', color:'black', borderColor:'black'}} onClick={()=>{}}>Register</Button>
-                        </CardContent>
-                    </Card>
+    if(allEvents===undefined){
+        return <>Loading</>
+    }
+    else{
+        console.log('allEvents - ', allEvents.response[0].eventDate[0]);
+        return (
+            <Card sx={{width:'90vw', display:'flex', flexDirection:'column', alignSelf:'center', py:5}}>
+                <Typography variant="h6" sx={{alignSelf:'center'}}>Upcoming Events</Typography>
+                <Grid container px={4} mt={5} gap={2}>
+                    {allEvents.response.map((event:any)=>{ 
+                        let date = new Date(event.eventDate[0]);
+                        console.log(date.getFullYear());
+                        return <Grid key={event._id} item sx={{width:'35%'}}>
+                        <Card sx={{borderRadius:'16px'}}>
+                            <CardMedia image="/Australian_University.webp" sx={{height:'40vh', objectFit:'fill'}}/>
+                            <CardContent>
+                                <Typography>{event.eventName}</Typography>
+                                <Typography>{`${date.getDate()} ${monthNames[date.getMonth()]}, ${date.getFullYear()}`}</Typography>
+                                <Typography>Webinar</Typography>
+                                <Button variant="outlined" size="small" sx={{mt:2, borderRadius:'14px', textTransform:'none', color:'black', borderColor:'black'}} onClick={()=>{navigate('/event/'+event._id)}}>Register</Button>
+                            </CardContent>
+                        </Card>
+                    </Grid>})}
                 </Grid>
-                <Grid item sx={{width:'35%'}}>
-                    <Card sx={{borderRadius:'16px'}}>
-                        <CardMedia image="/Australian_University.webp" sx={{height:'40vh', objectFit:'fill'}}/>
-                        <CardContent>
-                            <Typography>Event name</Typography>
-                            <Typography>Upcoming date of the event</Typography>
-                            <Typography>Webinar</Typography>
-                            <Button variant="outlined" onClick={()=>{}} size="small" sx={{mt:2, borderRadius:'14px', textTransform:'none', color:'black', borderColor:'black'}}>Register</Button>
-                        </CardContent>
-                        
-                    </Card>
-                </Grid>
-            </Grid>
-        </Card>
-    );
+            </Card>
+        );
+    }
 }
