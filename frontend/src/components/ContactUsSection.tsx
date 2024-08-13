@@ -57,8 +57,8 @@ export default function ContactUsSection(props:any){
         <Box ref={props.reference} sx={{display:'flex', flexDirection:'column', mx:'4vw', mb:5, border:'0px solid red'}}>
             <Typography fontSize={'50px'} color={'#265D6B'} mb={'4vw'} lineHeight={1} sx={{fontWeight:2}}>Contact Us</Typography>
             
-            <Box sx={{display:'flex', flexDirection:'row', height:'82vh', width:'100%', gap:2, border:'0px solid red'}}>
-                <Box component='form' height={'auto'} width={'50%'} sx={{display:'flex', flexDirection:'column', flexBasis:'6'}}>
+            <Box sx={{display:'flex', flexDirection:{xs:'column', md:'row'}, alignItems:'center', height:{xs:'auto',md:'82vh'}, width:'100%', gap:2, border:'0px solid red'}}>
+                <Box component='form' height={'auto'} width={{xs:'90%', md:'50%'}} sx={{display:'flex', flexDirection:'column', flexBasis:'6', order:{xs:2, md:1}}}>
                     <Box sx={{display:'flex', flexDirection:'row', width:'100%', gap:2, mb:2, border:'0px solid red'}}>
                         <TextField id='name' label='Full name *' name="name" value={formData.name} onChange={handleChange} error={!!formErrors.name} helperText={formErrors.name} size="small" fullWidth />
                         <TextField id='email' label='Email *' name="email" value={formData.email} onChange={handleChange} error={!!formErrors.email} helperText={formErrors.email} size="small" fullWidth />
@@ -114,7 +114,7 @@ export default function ContactUsSection(props:any){
                     </Box>
                     
                 </Box>
-                <Box component='img' src="/ContactUsImage.webp" height={'100%'} width={'50%'} sx={{objectFit:'cover', borderRadius:'16px'}}/>
+                <Box component='img' src="/ContactUsImage.webp" height={{xs:'70vh', sm:'90vh', md:'100%'}} width={{xs:'90%', md:'50%'}} sx={{objectFit:'cover', borderRadius:'16px', order:{xs:1, md:2}}}/>
             </Box>
             
         </Box>

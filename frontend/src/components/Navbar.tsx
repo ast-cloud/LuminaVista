@@ -65,11 +65,13 @@ export default function Navbar(){
                 <Grid item container xs={6} justifyContent='end' sx={{ display: { xs: 'none', sm: 'flex' } }}>
                     <Button sx={{textTransform:'none', fontSize:15, fontWeight:'normal', color:'white', '&:hover':{color:'#aeefc5'}}} onClick={function(){navigate('/')}}>Home</Button>
 
+                    <ServiceButton/>
+
                     <Button id='services-btn' sx={{textTransform:'none', fontSize:15, fontWeight:'normal', color:'white', '&:hover':{color:'#aeefc5'}}} onClick={function(){navigate('/services')}} onMouseEnter={(event)=>{
                         setAnchorEl(event.currentTarget);
                         setServiceMenuOpen(true);
-                    }} onMouseLeave={()=>{handleSubmenuClose(setServiceMenuOpen)}} >Services</Button>
-                    <Menu open={serviceMenuOpen} anchorEl={anchorEl}>
+                    }} >Services</Button>
+                    <Menu open={serviceMenuOpen} anchorEl={anchorEl} MenuListProps={{onMouseLeave:handleSubmenuClose}}>
                         <MenuItem>Study in Australia</MenuItem>
                         <MenuItem>Migrate to Australia</MenuItem>
                     </Menu>
@@ -111,5 +113,28 @@ export default function Navbar(){
             </Grid>
 
         </>
+    );
+}
+
+function ServiceButton(){
+
+    const navigate = useNavigate();
+
+    const [servicesAnchorEl, setServicesAnchorEl] = useState<null|HTMLElement>(null);
+
+    function handleSubmenuClose(){
+        setServicesAnchorEl(null);
+    }
+
+    return (
+        <div style={{border:'1px solid black', alignContent:'center'}}>
+            <Button id='services-btn' sx={{textTransform:'none', fontSize:15, fontWeight:'normal', color:'white', '&:hover':{color:'#aeefc5'}}} onClick={function(){navigate('/services')}} onMouseEnter={(event)=>{
+                        setServicesAnchorEl(event.currentTarget);
+                    }} >Services</Button>
+            <Menu open={Boolean(servicesAnchorEl)} anchorEl={servicesAnchorEl} MenuListProps={{onMouseLeave:handleSubmenuClose}}>
+                <MenuItem>Study in Australia</MenuItem>
+                <MenuItem>Migrate to Australia</MenuItem>
+            </Menu>
+        </div>
     );
 }
