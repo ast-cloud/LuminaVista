@@ -59,16 +59,16 @@ function Slides(){
   }
   
 function OurServices(){
-    // let greaterThan1332 = useMediaQuery('(min-width:1332px)');
+    //let greaterThan1332 = useMediaQuery('(min-width:1332px)');
     return (
         <Box sx={{display:'flex', flexDirection:'column', mx:'5vw', border:'0px solid red'}}>
             <Typography fontSize={'50px'} color={'#265D6B'} mb={'50px'} lineHeight={1}>Our Services</Typography>
             {/* <Box sx={{display:'flex', flexDirection:'row'}}> */}
                 {/* <Divider orientation="vertical" sx={{height:'100%', alignSelf:'stretch', mr:'10vw'}}/> */}
             <Grid container rowGap={{xs:4, sm:5}} columnGap={2} sx={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', border:'0px solid black'}}>
-                <Grid item lg={3}>
+                <Grid item>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
-                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
+                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:{xs:'258px', lg:'330px', xl:'440px'}, height:'auto', px:'15px', py:'17px', gap:2}}>
                             <MenuBookOutlined fontSize="large"/>
                             <Typography variant="h6">Study in Australia</Typography>
                             <Typography>Guidance for international students to achieve academic and career success in Australia.</Typography>
@@ -76,9 +76,9 @@ function OurServices(){
                         </Box>
                     </Card>
                 </Grid>
-                <Grid item lg={3}>
+                <Grid item>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
-                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
+                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:{xs:'258px', lg:'330px', xl:'440px'}, height:'auto', px:'15px', py:'17px', gap:2}}>
                             <AirplanemodeActiveOutlined fontSize="large"/>
                             <Typography variant="h6">Migrate to Australia</Typography>
                             <Typography>Support for smooth migration, job search, & integration into Australian life & work.</Typography>
@@ -86,9 +86,9 @@ function OurServices(){
                         </Box>
                     </Card>
                 </Grid>
-                <Grid item lg={3}>
+                <Grid item>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
-                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
+                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:{xs:'258px', lg:'330px', xl:'440px'}, height:'auto', px:'15px', py:'17px', gap:2}}>
                             <AnalyticsOutlined fontSize="large"/>
                             <Typography variant="h6">Job ready program</Typography>
                             <Typography>Training to equip graduates and professionals with practical skills for career advancement.</Typography>
@@ -98,7 +98,7 @@ function OurServices(){
                 </Grid>
                 <Grid item>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
-                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
+                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:{xs:'258px', lg:'340px', xl:'440px'}, height:'auto', px:'15px', py:'17px', gap:2}}>
                             <SettingsSuggestOutlined fontSize="large"/>
                             <Typography variant="h6">Career Counselling Services</Typography>
                             <Typography>Training to equip graduates and professionals with practical skills for career advancement.</Typography>
@@ -108,7 +108,7 @@ function OurServices(){
                 </Grid>
                 <Grid item>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
-                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
+                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:{xs:'258px', lg:'340px', xl:'440px'}, height:'auto', px:'15px', py:'17px', gap:2}}>
                             <CastForEducationOutlined fontSize="large"/>
                             <Typography variant="h6">Mentorship Programs</Typography>
                             <Typography>Training to equip graduates and professionals with practical skills for career advancement.</Typography>
@@ -118,7 +118,7 @@ function OurServices(){
                 </Grid>
                 <Grid item>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
-                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
+                        <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:{xs:'258px', lg:'340px', xl:'440px'}, height:'auto', px:'15px', py:'17px', gap:2}}>
                             <SchoolOutlined fontSize="large"/>
                             <Typography variant="h6">Internship</Typography>
                             <Typography>Training to equip graduates and professionals with practical skills for career advancement.</Typography>

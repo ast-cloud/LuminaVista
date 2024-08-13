@@ -16,7 +16,7 @@ export default function Navbar(){
     // const [faqMenuOpen, setFaqMenuOpen] = useState<boolean>(false);
     // const [aboutMenuOpen, setAboutMenuOpen] = useState<boolean>(false);
     // const [navbarOpenMenu, setNavbarOpenMenu] = useState<null|NavbarOpenMenu>(null);
-    const [serviceMenuOpen, setServiceMenuOpen] = useState(false);
+    // const [serviceMenuOpen, setServiceMenuOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleMenuOpen = (event:any) => {
@@ -30,11 +30,11 @@ export default function Navbar(){
       };
 
 
-    const handleSubmenuClose = (setThisMenuOpen:any)=>{
-        console.log('Submenu close ran')
-        setAnchorEl(null);
-        setThisMenuOpen(false);
-    }
+    // const handleSubmenuClose = (setThisMenuOpen:any)=>{
+    //     console.log('Submenu close ran')
+    //     setAnchorEl(null);
+    //     setThisMenuOpen(false);
+    // }
 
     return (
         <>
@@ -65,19 +65,16 @@ export default function Navbar(){
                 <Grid item container xs={6} justifyContent='end' sx={{ display: { xs: 'none', sm: 'flex' } }}>
                     <Button sx={{textTransform:'none', fontSize:15, fontWeight:'normal', color:'white', '&:hover':{color:'#aeefc5'}}} onClick={function(){navigate('/')}}>Home</Button>
 
-                    <Button id='services-btn' sx={{textTransform:'none', fontSize:15, fontWeight:'normal', color:'white', '&:hover':{color:'#aeefc5'}}} onClick={function(){navigate('/services')}} onMouseEnter={(event)=>{
-                        setAnchorEl(event.currentTarget);
-                        setServiceMenuOpen(true);
-                    }} >Services</Button>
-                    <Menu open={serviceMenuOpen} anchorEl={anchorEl} MenuListProps={{onMouseLeave:handleSubmenuClose}}>
+                    <Button id='services-btn' sx={{textTransform:'none', fontSize:15, fontWeight:'normal', color:'white', '&:hover':{color:'#aeefc5'}}} onClick={function(){navigate('/services')}} >Services</Button>
+                    {/* <Menu open={serviceMenuOpen} anchorEl={anchorEl}>
                         <MenuItem>Study in Australia</MenuItem>
                         <MenuItem>Migrate to Australia</MenuItem>
-                    </Menu>
+                    </Menu> */}
                     
                     <Button sx={{textTransform:'none', fontSize:15, fontWeight:'normal', color:'white', '&:hover':{color:'#aeefc5'}}} onClick={function(){navigate('/faqs')}} onMouseEnter={(event)=>{
                         setAnchorEl(event.currentTarget);
                         
-                    }} onMouseLeave={handleSubmenuClose}>FAQ</Button>
+                    }}>FAQ</Button>
                     <Menu open={false} anchorEl={anchorEl}>
                         <MenuItem>Study in Australia</MenuItem>
                         <MenuItem>Migrate to Australia</MenuItem>
