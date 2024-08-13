@@ -16,6 +16,46 @@ const FAQQnA = [
         ["How does Lumina Vista help with university applications?","We provide detailed assistance with applications, including essay writing, document preparation, and submission tracking, ensuring you meet all deadlines and requirements."],
         ["Can you help me find scholarships?", "You can get started by contacting us through our website or scheduling a consultation with one of our advisors."],
     ],
+    [
+        ["What are the benefits of living and working in Australia?","Australia offers a high standard of living, diverse job opportunities, a multicultural environment, and excellent healthcare and education systems."],
+        ["What visa options are available for individuals looking to move to Australia?","There are various visa options including student visas, work visas, and permanent residency visas. We provide guidance on the best option based on your circumstances."],
+        ["How does Lumina Vista assist with permanent residency applications?","We offer comprehensive guidance on the application processes, documentation, and meeting eligibility criteria, along with ongoing support throughout the residency application process."]
+    ],
+    [
+        ["What does Lumina Vista's career counseling service include?","Our career counseling services include personalized guidance, strategic career planning, skills assessment and development, and insights into industry trends."],
+        ["How can career counseling help me?","Career counseling helps you define your career goals, identify growth opportunities, improve your skills, and navigate career transitions effectively."],
+        ["Do you provide job search assistance?","Yes, we offer support in finding and applying for jobs, including access to job listings, application tips, and interview preparation."]
+    ],
+    [
+        ["What are the benefits of joining a mentorship program?","Our mentorship programs provide personalized guidance, help you achieve your goals, improve your skills, and offer holistic personal and professional growth."],
+        ["How do I join a mentorship program?","You can join a mentorship program by contacting us and scheduling an initial consultation to discuss your needs and goals."],
+        ["What kind of support can I expect from a mentor?","Our mentors provide industry-specific advice, life coaching, and networking opportunities, helping you navigate both personal and academic growth."]
+    ],
+    [
+        ["How can Lumina Vista help students find internships?","We assist students by connecting them with internship opportunities that match their field of study and career aspirations, providing guidance on applications and interview preparation."],
+        ["What support do organizations get when seeking interns?","Organizations receive support in identifying suitable candidates, streamlining the recruitment process, and ensuring a good match for both parties."],
+        ["Are internships paid or unpaid?","It depends on the organization and the nature of the internship. We provide detailed information on each opportunity to help you make an informed decision."]
+    ],
+    [
+        ["What documents are required for a student visa application?","Required documents typically include a valid passport, proof of enrollment, financial statements, health insurance, and English proficiency test scores. We provide a detailed checklist during our consultation."],
+        ["How long does it take to process a student visa?","Processing times vary depending on the type of visa and individual circumstances. Typically, it can take from a few weeks to a few months."],
+        ["Can Lumina Vista help with visa extensions?","Yes, we provide guidance on extending your visa and meeting all necessary requirements to ensure a smooth process."]
+    ],
+    [
+        ["What topics are covered in pre-departure orientation?","Our orientation sessions cover cultural adjustment, practical tips for living in Australia, accommodation options, and preparing for academic life."],
+        ["Why is pre-departure orientation important?","It helps you acclimate to your new environment, understand what to expect, and be better prepared for your journey and stay in Australia."],
+        ["Is there a fee for pre-departure orientation?","Pre-departure orientation is included as part of our comprehensive service package for students and professionals."]
+    ],
+    [
+        ["What relocation support services does Lumina Vista offer?","We assist with finding accommodation, understanding local amenities, and settling into life in Australia, ensuring a smooth transition."],
+        ["Can you help me find part-time employment while studying?","Yes, we provide guidance on finding part-time job opportunities that align with your study schedule and career goals."],
+        ["How do you support newcomers in understanding Australian workplace culture?","We offer workplace culture orientation sessions that provide insights into Australian workplace expectations and practices, helping you integrate smoothly."]
+    ],
+    [
+        ["How can I contact Lumina Vista for more information?","You can contact us through our website, email, or phone. Our contact page provides all the necessary details for reaching out to us."],
+        ["What are your office hours?","Our office hours are from 9 AM to 5 PM, Monday to Friday. You can also schedule appointments outside these hours if needed."],
+        ["Where is Lumina Vista located?","We have offices in both Australia and India. Visit our contact page for specific addresses and location details."]
+    ]
 
 ];
 
