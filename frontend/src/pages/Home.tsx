@@ -59,7 +59,7 @@ function Slides(){
   }
   
 function OurServices(){
-    let greaterThan1332 = useMediaQuery('(min-width:1332px)');
+    // let greaterThan1332 = useMediaQuery('(min-width:1332px)');
     return (
         <Box sx={{display:'flex', flexDirection:'column', mx:'5vw', border:'0px solid red'}}>
             <Typography fontSize={'50px'} color={'#265D6B'} mb={'50px'} lineHeight={1}>Our Services</Typography>
