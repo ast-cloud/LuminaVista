@@ -59,13 +59,14 @@ function Slides(){
   }
   
 function OurServices(){
+    let greaterThan1332 = useMediaQuery('(min-width:1332px)');
     return (
         <Box sx={{display:'flex', flexDirection:'column', mx:'5vw', border:'0px solid red'}}>
             <Typography fontSize={'50px'} color={'#265D6B'} mb={'50px'} lineHeight={1}>Our Services</Typography>
             {/* <Box sx={{display:'flex', flexDirection:'row'}}> */}
                 {/* <Divider orientation="vertical" sx={{height:'100%', alignSelf:'stretch', mr:'10vw'}}/> */}
             <Grid container rowGap={{xs:4, sm:5}} columnGap={2} sx={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', border:'0px solid black'}}>
-                <Grid item>
+                <Grid item lg={3}>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
                         <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
                             <MenuBookOutlined fontSize="large"/>
@@ -75,7 +76,7 @@ function OurServices(){
                         </Box>
                     </Card>
                 </Grid>
-                <Grid item>
+                <Grid item lg={3}>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
                         <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
                             <AirplanemodeActiveOutlined fontSize="large"/>
@@ -85,7 +86,7 @@ function OurServices(){
                         </Box>
                     </Card>
                 </Grid>
-                <Grid item>
+                <Grid item lg={3}>
                     <Card sx={{boxShadow:5, borderRadius:'16px'}} component={motion.div} whileHover={{scale:1.05}}>
                         <Box sx={{display:'flex', flexDirection:'column', justifyContent:'flex-end', width:'258px', height:'auto', px:'15px', py:'17px', gap:2}}>
                             <AnalyticsOutlined fontSize="large"/>
