@@ -1,6 +1,23 @@
-import { ExpandMoreOutlined, Search } from "@mui/icons-material";
-import { Box, Button, Card, Divider, Grid, InputAdornment, TextField, Typography } from "@mui/material";
+import { ExpandLess, ExpandMore, ExpandMoreOutlined, Search } from "@mui/icons-material";
+import { Box, Button, Card, Collapse, Divider, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 import ContactUsSection from "../components/ContactUsSection";
+import { useState } from "react";
+
+const FAQHeaders = ["Company", "Study in Australia", "Life and work in Australia", "Career counselling", "Mentorship programs", "Internship", "Visa assistance", "Pre-Departure orientation", "Relocation support", "Contact Us"];
+// enum FAQHeads{Company, Study_in_Australia, Life_and_work_in_Australia, Career_counselling, Mentorship_programs, Internship, Visa_assistance, Pre_Departure_orientation, Relocation_support, Contact_Us};
+const FAQQnA = [
+    [
+        ["What is Lumina Vista?", "Lumina Vista is a comprehensive service provider for international students and professionals, offering support in education, career counseling, mentorship, and migration services in Australia."],
+        ["Who can use Lumina Vista's services?","Our services are designed for international students, recent graduates, and professionals looking to study, work, or settle in Australia."],
+        ["How do I get started with Lumina Vista?","You can get started by contacting us through our website or scheduling a consultation with one of our advisors."]
+    ],
+    [
+        ["What are the benefits of studying in Australia?", "Australia offers high-quality education, cultural diversity, global recognition of degrees, and excellent opportunities for research and internships."],
+        ["How does Lumina Vista help with university applications?","We provide detailed assistance with applications, including essay writing, document preparation, and submission tracking, ensuring you meet all deadlines and requirements."],
+        ["Can you help me find scholarships?", "You can get started by contacting us through our website or scheduling a consultation with one of our advisors."],
+    ],
+
+];
 
 export default function FAQs(){
     return (
@@ -61,38 +78,37 @@ function AnswerToAllYourDoubts(){
 }
 
 function FAQData(){
+
+    const [selectedFAQHeaderIndex, setSelectedFAQHeaderIndex] = useState(0);
+    const [openedQuestionIndex, setOpenQuestionIndex] = useState(0);
     return (
-        <Grid container columnGap={2} rowGap={1} sx={{mt:4}}>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Company</Typography>
+        <Box sx={{display:"flex", flexDirection:'column', gap:4}}>
+            <Grid container columnGap={2} rowGap={1} sx={{mt:4}}>
+                {
+                    FAQHeaders.map((title, index)=>(<Grid item>
+                        <Typography component={'a'} noWrap fontWeight={(index===selectedFAQHeaderIndex)?'bold':'normal'} fontSize={'15px'} sx={{cursor:'pointer'}} onClick={()=>{setSelectedFAQHeaderIndex(index)}}>{title}</Typography>
+                    </Grid>))
+                }
             </Grid>
-            <Grid item>        
-                <Typography noWrap fontSize={'15px'}>Study in Australia</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Life and work in Australia</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Career counselling</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Mentorship programs</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Internship</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Visa assistance</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Pre-Departure orientation</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Relocation support</Typography>
-            </Grid>
-            <Grid item>
-                <Typography noWrap fontSize={'15px'}>Contact Us</Typography>
-            </Grid>
-        </Grid>
+            <Box sx={{display:"flex", flexDirection:"column"}}>
+                {
+                    FAQQnA[selectedFAQHeaderIndex].map((OneQandA, index, arr)=>{
+                        
+                        return <Box display={'flex'} flexDirection={'column'} gap={1}>
+                            <Box onClick={()=>{setOpenQuestionIndex(index)}} sx={{display:'flex', flexDirection:'row', cursor:'pointer'}}>
+                                <Typography color='black'>{OneQandA[0]}</Typography>
+                                &nbsp;&nbsp;
+                                {(openedQuestionIndex===index)?<ExpandLess sx={{color:'black'}}/>:<ExpandMore sx={{color:'black'}}/>}
+                            </Box>
+                            <Collapse in={index==openedQuestionIndex}>
+                                <Typography fontSize={'15px'}>{OneQandA[1]}</Typography>
+                            </Collapse>
+                            {index!==(arr.length-1) && <Divider sx={{my:2}}/>}
+                        </Box>
+                    })
+                }
+                
+            </Box>
+        </Box>
     );
 }
