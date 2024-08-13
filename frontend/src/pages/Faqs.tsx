@@ -1,5 +1,5 @@
-import { ExpandLess, ExpandMore, ExpandMoreOutlined, Search } from "@mui/icons-material";
-import { Box, Button, Card, Collapse, Divider, Grid, InputAdornment, TextField, Typography } from "@mui/material";
+import { ExpandLess, ExpandMore, ExpandMoreOutlined } from "@mui/icons-material";
+import { Box, Button, Card, Collapse, Divider, Grid, Typography } from "@mui/material";
 import ContactUsSection from "../components/ContactUsSection";
 import { useState } from "react";
 
@@ -70,7 +70,7 @@ function AnswerToAllYourDoubts(){
                 <Typography>ANSWER TO ALL YOUR DOUBTS !</Typography>
                 <Divider sx={{mt:2, mb:4}}/>
                 <Typography mb={6}>Got questions? We've got answers! Browse through to find everything you need to know about our services, and your journey in Australia. If something’s still on your mind, don’t hesitate to reach out. We’re here to help!</Typography>
-                <TextField size="small" sx={{width:'25%', alignSelf:'end'}} InputProps={{startAdornment:(<InputAdornment position="start"><Search/></InputAdornment>)}}/>
+                {/* <TextField size="small" sx={{width:'25%', alignSelf:'end'}} InputProps={{startAdornment:(<InputAdornment position="start"><Search/></InputAdornment>)}}/> */}
                 <FAQData/>
             </Box>
         </Card>
