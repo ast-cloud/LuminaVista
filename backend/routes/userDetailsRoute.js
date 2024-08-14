@@ -18,27 +18,20 @@ router.post('/userDetails', async(req, res) => {
         eventId,
         registrationDate
     } = req.body;
-    console.log('Request body - ',req.body);
     if (!charPattern.test(firstName) || !charPattern.test(lastName)) {
-        console.log('here 1');
         return res.status(400).send({ message: "First and Last Name must contain alphabets only" });
     }
 
     // Check mandatory fields
     if (!firstName || !lastName || !email || !phoneNumber || !areaOfInterest) {
-        console.log('here 2');
         return res.status(400).send({ message: "First Name, Last Name, Email, Phone Number, and Area of Interest are required" });
     } else if (!charPattern.test(firstName) || !charPattern.test(lastName)) {
-        console.log('here 3');
         return res.status(400).send({ message: "First and Last Name must contain alphabets only" });
     } else if (!emailPattern.test(email)) {
-        console.log('here 4');
         return res.status(400).send({ message: "Invalid email format" });
     } else if (isNaN(phoneNumber)) {
-        console.log('here 5');
         return res.status(400).send({ message: "Invalid Phone format" })
     } else if (phoneNumber.length < 10 || phoneNumber.length > 10) {
-        console.log('here 6');
         return res.status(400).send({ message: "Enter valid phone number" });
     }
 
@@ -52,7 +45,8 @@ router.post('/userDetails', async(req, res) => {
             comments: comments || null
         });
         //create new userdetails object using mongoose
-        const response = await newUserDetails.save();
+        // const response = await newUserDetails.save();
+        const response = { message: 'no data saved' }; //just for testing
         await sendMail(email, eventId, registrationDate, firstName)
         return res.status(200).json({ response: response })
 

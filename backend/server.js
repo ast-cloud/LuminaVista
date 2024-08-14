@@ -1,5 +1,4 @@
 const express = require('express');
-let cors = require('cors');
 const app = express()
 const db = require('./db');
 const bodyParser = require('body-parser');
@@ -9,8 +8,6 @@ const mentorRoutes = require('./routes/mentorRoute');
 const internRoutes = require('./routes/internRoute');
 const userDetailsRoutes = require('./routes/userDetailsRoute');
 const eventDetailsRoutes = require('./routes/eventDetailsRoute');
-
-app.use(cors());
 
 app.use(bodyParser.json());
 

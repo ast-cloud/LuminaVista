@@ -11,9 +11,6 @@ const transporter = nodemailer.createTransport({
         user: 'apikey',
         pass: process.env.API_KEY, // Replace with your actual SendGrid API Key
     },
-    tls: {
-        rejectUnauthorized: false // Disable certificate validation
-    }
     // service: 'gmail',
     // auth: {
     //     user: '',
@@ -111,24 +108,22 @@ const sendMail = async(email, eventId, registrationDate, firstName) => {
                 </p>
                 </i>
                 <p>
-                <button class="dropdown" style="background-color: #5D5BD4; font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px; cursor: pointer;">
-
                     <a href="https://calendar.google.com/calendar/r/eventedit?text=${eventName}&dates=20240812T170000/20240812T180000&location=${meetingLink}&details=${description}" target="_blank">
-                        Google Calendar
+                        <button class="dropdown" style="background-color: rgba(93, 91, 212, 0); font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px;  cursor: pointer;">
+                    Google Calendar
+                        </button>
                     </a>
-                </button>
-                <button class="dropdown" style="background-color: #5D5BD4; font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px; cursor: pointer;">
-
-                    <a href="https://outlook.live.com/owa/?path=/calendar/action/compose&rru=addevent&startdt=20240812T170000&enddt=20240812T180000&
-                    subject=${eventName}&body=${description}&location=${meetingLink}" target="_blank">
-                        Outlook Calendar
+                
+                    <a href="https://outlook.live.com/owa/?path=/calendar/action/compose&rru=addevent&startdt=20240812T170000&enddt=20240812T180000&subject=${eventName}&body=${description}&location=${meetingLink}" target="_blank">
+                        <button class="dropdown" style="background-color: rgba(93, 91, 212, 0); font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px; cursor: pointer;">
+                            Outlook Calendar
+                        </button>
                     </a>
-                </button>
-                <button class="dropdown" style="background-color: #5D5BD4; font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px; cursor: pointer;">
-                    <a href="data:text/calendar;charset=utf8,${eventName}&body=${description}&location=${meetingLink}" download="event.ics">
-                    Apple Calendar
+                    <a href="calendar://;charset=utf8,${encodeURIComponent(value)}" download="event.ics">
+                        <button class="dropdown" style="background-color:rgba(93, 91, 212, 0); font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px; cursor: pointer;">
+                            Apple Calendar
+                        </button>
                     </a>
-                </button>
                 </p>          
             `,
             icalEvent: {
