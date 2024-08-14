@@ -45,7 +45,7 @@ function UpcomingEvents(){
     useEffect(()=>{
 
         const fetchAllEvents = async ()=>{
-            let allEventsData = await axios.get('http://13.233.157.167:3002/event');
+            let allEventsData = await axios.get('https://lumina-vista-backend.vercel.app/event');
             if(allEventsData.status==200){
                 setAllEvents(allEventsData.data);
                 console.log('All events - ', allEventsData.data);
