@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Snackbar, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -30,7 +30,7 @@ function RegistrationForm(){
         phone:'',
         areaOfInterest:'',
         comment:'',
-        registrationDate:'12082024150016000000'
+        registrationDate:''
     });
 
     const [formErrors, setFormErrors] = useState({
@@ -40,6 +40,11 @@ function RegistrationForm(){
         phone:'',
         areaOfInterest:'',
         comment:''
+    });
+
+    const [snackbarData, setSnackbarData] = useState<any>({
+        open: false,
+        severity:''
     });
 
     const handleChange = (e: any)=>{
@@ -94,34 +99,66 @@ function RegistrationForm(){
                   },
                 body: JSON.stringify(newobj)
             }).then((res)=>{
+                if(res.status==200){
+                    setSnackbarData({
+                        open: true,
+                        severity: 'success'
+                    });
+                    setFormData({
+                        firstName:'',
+                        lastName:'',
+                        email:'',
+                        phone:'',
+                        areaOfInterest:'',
+                        comment:'',
+                        registrationDate:''
+                    });
+                }
+                else{
+                    setSnackbarData({
+                        open: true,
+                        severity: 'error'
+                    });
+                }
                 console.log('Response status - ', res.status);
             })
         }
     }
+
+    const handleSnackbarClose = ()=>{
+        setSnackbarData({...snackbarData, open:false});
+    }
     
     return (
-        <Box sx={{display:'flex', flexDirection:'column', width:'35vw', alignItems:'flex-start', gap:4, border:'0px solid red'}}>
-            <Typography variant="h4">1. Add your details</Typography>
-            <Box sx={{display:'flex', flexDirection:'row', gap:2}}>
-                <TextField label='Firstname*' name="firstName" value={formData.firstName} onChange={handleChange} error={!!formErrors.firstName} helperText={formErrors.firstName}size="small" />
-                <TextField label='Lastname*' name="lastName" value={formData.lastName} onChange={handleChange} error={!!formErrors.lastName} helperText={formErrors.lastName} size="small" />
+        <>
+            <Box sx={{display:'flex', flexDirection:'column', width:'35vw', alignItems:'flex-start', gap:4, border:'0px solid red'}}>
+                <Typography variant="h4">1. Add your details</Typography>
+                <Box sx={{display:'flex', flexDirection:'row', gap:2}}>
+                    <TextField label='Firstname*' name="firstName" value={formData.firstName} onChange={handleChange} error={!!formErrors.firstName} helperText={formErrors.firstName}size="small" />
+                    <TextField label='Lastname*' name="lastName" value={formData.lastName} onChange={handleChange} error={!!formErrors.lastName} helperText={formErrors.lastName} size="small" />
+                </Box>
+                <TextField label='Email*' name="email" value={formData.email} onChange={handleChange} error={!!formErrors.email} helperText={formErrors.email} size="small" fullWidth/>
+                <TextField label='Phone number*' name="phone" value={formData.phone} onChange={handleChange} error={!!formErrors.phone} helperText={formErrors.phone} size="small" fullWidth/>
+                <TextField select label='Area of interest' name="areaOfInterest" value={formData.areaOfInterest} onChange={handleChange} InputLabelProps={{sx:{fontSize:'14px'}}} size="small" fullWidth>
+                    <MenuItem value={'Engineering and Technology'}>Engineering and Technology</MenuItem>
+                    <MenuItem value={'Business and Management'}>Business and Management</MenuItem>
+                    <MenuItem value={'Computer Science and IT'}>Computer Science and IT</MenuItem>
+                    <MenuItem value={'Finance and accounting'}>Finance and accounting</MenuItem>
+                    <MenuItem value={'AI and ML'}>AI and ML</MenuItem>
+                    <MenuItem value={'Cybersecurity'}>Cybersecurity</MenuItem>
+                    <MenuItem value={'Others (Specify in the message)'}>Others (Specify in the message)</MenuItem>
+                </TextField>
+                <TextField label='Comments' name="comment" value={formData.comment} onChange={handleChange} multiline minRows={4} sx={{mb:2}} fullWidth/>
+                <Typography variant="h4">2. Event policies</Typography>
+                <Typography>Please indicate that you’ve read and agree to the event’s policies.</Typography>
+                <FormControlLabel control={<Checkbox size="small" checked={agreeToWebinarPolicy} onChange={(e)=>{setAgreeToWebinarPolicy(e.target.checked)}}/>} label='I Agree to online webinar policy'/>
+                <Button variant="outlined" onClick={handleSubmit} sx={{borderRadius:'16px', color:'black', borderColor:'black'}} fullWidth disabled={!agreeToWebinarPolicy}>Submit</Button>
             </Box>
-            <TextField label='Email*' name="email" value={formData.email} onChange={handleChange} error={!!formErrors.email} helperText={formErrors.email} size="small" fullWidth/>
-            <TextField label='Phone number*' name="phone" value={formData.phone} onChange={handleChange} error={!!formErrors.phone} helperText={formErrors.phone} size="small" fullWidth/>
-            <TextField select label='Area of interest' name="areaOfInterest" value={formData.areaOfInterest} onChange={handleChange} InputLabelProps={{sx:{fontSize:'14px'}}} size="small" fullWidth>
-                <MenuItem value={'Engineering and Technology'}>Engineering and Technology</MenuItem>
-                <MenuItem value={'Business and Management'}>Business and Management</MenuItem>
-                <MenuItem value={'Computer Science and IT'}>Computer Science and IT</MenuItem>
-                <MenuItem value={'Finance and accounting'}>Finance and accounting</MenuItem>
-                <MenuItem value={'AI and ML'}>AI and ML</MenuItem>
-                <MenuItem value={'Cybersecurity'}>Cybersecurity</MenuItem>
-                <MenuItem value={'Others (Specify in the message)'}>Others (Specify in the message)</MenuItem>
-            </TextField>
-            <TextField label='Comments' name="comment" value={formData.comment} onChange={handleChange} multiline minRows={4} sx={{mb:2}} fullWidth/>
-            <Typography variant="h4">2. Event policies</Typography>
-            <Typography>Please indicate that you’ve read and agree to the event’s policies.</Typography>
-            <FormControlLabel control={<Checkbox size="small" checked={agreeToWebinarPolicy} onChange={(e)=>{setAgreeToWebinarPolicy(e.target.checked)}}/>} label='I Agree to online webinar policy'/>
-            <Button variant="outlined" onClick={handleSubmit} sx={{borderRadius:'16px', color:'black', borderColor:'black'}} fullWidth disabled={!agreeToWebinarPolicy}>Submit</Button>
-        </Box>
+            <Snackbar open={snackbarData.open} autoHideDuration={4000} onClose={handleSnackbarClose} message="URL copied for sharing">
+                <Alert severity={snackbarData.severity}>
+                    {snackbarData.severity==='success'?'Registration successful.':'Error in registration.'}
+                </Alert>
+            </Snackbar>
+        </>
     );
 }
