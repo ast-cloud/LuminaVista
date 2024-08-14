@@ -86,7 +86,7 @@ function RegistrationForm(){
                 eventId: id
             }
 
-            fetch('http://13.233.157.167:3002/userDetails', {
+            fetch('https://lumina-vista-backend.vercel.app/userDetails', {
                 method:'POST',
                 headers: {
                     'Accept': 'application/json',
