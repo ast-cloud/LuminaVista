@@ -17,6 +17,10 @@ const eventDetailsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    meetingLink: {
+        type: String,
+        required: true
+    }
 
 
 })

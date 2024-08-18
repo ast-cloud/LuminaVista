@@ -21,6 +21,10 @@ const userDetailsSchema = new mongoose.Schema({
         type: [String],
         required: true,
     },
+    registrationDate: {
+        type: Date,
+        required: true,
+    },
     comments: {
         type: String,
     }

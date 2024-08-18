@@ -4,11 +4,11 @@ const eventDetails = require('../models/eventDetails');
 
 router.post('/event', async(req, res) => {
     try {
-        const { eventName, eventDate, eventTime, description } = req.body;
+        const { eventName, eventDate, eventTime, description, meetingLink } = req.body;
 
         // Check for mandatory fields
-        if (!eventName || !eventDate || !eventTime || !description) {
-            return res.status(400).json({ message: "Event name, date, time and description are required" });
+        if (!eventName || !eventDate || !eventTime || !description || !meetingLink) {
+            return res.status(400).json({ message: "Event name, date, time description and meeting link are required" });
         }
 
         //Function to convert DDMMYYYY to YYYY-MM-DD
@@ -27,7 +27,8 @@ router.post('/event', async(req, res) => {
             eventName,
             eventDate: formattedDates,
             eventTime,
-            description
+            description,
+            meetingLink
         });
 
         const response = await newEvent.save();

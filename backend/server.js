@@ -8,9 +8,7 @@ const mentorRoutes = require('./routes/mentorRoute');
 const internRoutes = require('./routes/internRoute');
 const userDetailsRoutes = require('./routes/userDetailsRoute');
 const eventDetailsRoutes = require('./routes/eventDetailsRoute');
-let cors = require('cors');
 
-app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {

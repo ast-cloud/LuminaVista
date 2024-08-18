@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const contact = require('../models/contact');
+const sendContactMail = require('../middlewares/sendContactMail');
 const { upload, handleFileUpload } = require('../middlewares/upload');
 
 router.post('/contact', upload, handleFileUpload, async(req, res) => {
@@ -36,7 +37,20 @@ router.post('/contact', upload, handleFileUpload, async(req, res) => {
             files: req.uploadedFiles,
         });
 
+        const contactDetails = {
+            fullName,
+            email,
+            phoneNumber,
+            methodOfContact,
+            help: help || null,
+            areaOfInterest: areaOfInterest || null,
+            message,
+            subscribeToMarketing,
+            files: req.uploadedFiles,
+        };
+
         const response = await newContact.save();
+        await sendContactMail(contactDetails)
         return res.status(200).json({ response: response })
 
     } catch (err) {
@@ -46,8 +60,6 @@ router.post('/contact', upload, handleFileUpload, async(req, res) => {
 
 
 })
-
-
 
 
 module.exports = router;
