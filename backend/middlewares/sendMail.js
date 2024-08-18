@@ -50,8 +50,8 @@ const sendMail = async(email, eventId, registrationDate, firstName) => {
         console.error(`No event found with ID: ${eventId}`);
         return; // or handle this case appropriately, e.g., return an error response
     }
-    const { eventName, eventDate, eventTime, description } = eventDetail;
-    const meetingLink = process.env.meetingLink;
+    const { eventName, eventDate, eventTime, description, meetingLink } = eventDetail;
+    //const meetingLink = process.env.meetingLink;
     // const date = eventDate.map(() => convertToDate());
     const date = convertToDate(registrationDate.slice(0, 8));
     const time1 = registrationDate.slice(8, 12);
