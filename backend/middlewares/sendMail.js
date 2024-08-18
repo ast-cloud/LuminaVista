@@ -104,17 +104,17 @@ const sendMail = async(email, eventId, registrationDate, firstName) => {
                 </p>
                 <!-- <p><strong>Event Date:</strong> ${date.toDateString()}</p> -->
                 <p><a href="${meetingLink}">Join Zoom meeting</a>
-                <br>Meeting Password: example
+                <br/>
                 </p>
                 </i>
                 <p>
-                    <a href="https://calendar.google.com/calendar/r/eventedit?text=${eventName}&dates=20240812T170000/20240812T180000&location=${meetingLink}&details=${description}" target="_blank">
+                    <a href="https://calendar.google.com/calendar/r/eventedit?text=${eventName}&dates=20240812T170000/20240812T180000&location=${meetingLink}&details=${description}" target="_blank" style="margin-right: 10px;">
                         <button class="dropdown" style="background-color: rgba(93, 91, 212, 0); font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px;  cursor: pointer;">
                     Google Calendar
                         </button>
                     </a>
                 
-                    <a href="https://outlook.live.com/owa/?path=/calendar/action/compose&rru=addevent&startdt=20240812T170000&enddt=20240812T180000&subject=${eventName}&body=${description}&location=${meetingLink}" target="_blank">
+                    <a href="https://outlook.live.com/owa/?path=/calendar/action/compose&rru=addevent&startdt=20240812T170000&enddt=20240812T180000&subject=${eventName}&body=${description}&location=${meetingLink}" target="_blank" style="margin-right: 10px;">
                         <button class="dropdown" style="background-color: rgba(93, 91, 212, 0); font-color: white; padding: 10px 20px; border: 1px solid black; border-radius: 4px; cursor: pointer;">
                             Outlook Calendar
                         </button>
